@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Movie.Domain.Directors
+namespace Movie.Domain.Genres
 {
-    public class MovieDirector
+    public class MovieGenre
     {
         public int MovieId { get; private set; }
 
         public Movies.Movie Movie { get; private set; }
 
-        public int DirectorId { get; private set; }
+        public int GenreId { get; private set; }
 
-        public Director Director { get; private set; }
+        public Genre Genre { get; private set; }
     }
 }

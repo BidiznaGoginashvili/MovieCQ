@@ -23,23 +23,23 @@ namespace Movie.Application.Queries.MovieDetails
                 result.Listing = listings.Where(listing=>listing.Id == Id).Select(movie => new MovieDetailsQueryResult
                 {
                     Id = movie.Id,
-                    Title = movie.ImagePath,
-                    Budget = movie.Budget,
+                    Title = movie.Title,
                     Salary = movie.Salary,
-                    ImagePath = movie.ImagePath,
-                    Description = movie.Description,
-                    ReleaseDate = movie.ReleaseDate,
                     Genres = movie.Genres,
-                    MovieActor = movie.MovieActor.Select(mact => new MovieDetailsActorResult
-                    {
-                        FullName = mact.FullName,
-                        ImagePath = mact.ImagePath
-                    }).ToList(),
+                    Budget = movie.Budget,
+                    ImagePath = movie.ImagePath,
+                    ReleaseDate = movie.ReleaseDate,
+                    Description = movie.Description,
                     MovieDirector = new MovieDetailsDirectorResult()
                     {
                         FullName = movie.MovieDirector.FullName,
                         ImagePath = movie.MovieDirector.ImagePath
                     },
+                    MovieActor = movie.MovieActor.Select(mact => new MovieDetailsActorResult
+                    {
+                        FullName = mact.FullName,
+                        ImagePath = mact.ImagePath
+                    }).ToList()
                 }).ToList();
 
                 return Ok(result);
@@ -68,7 +68,7 @@ namespace Movie.Application.Queries.MovieDetails
 
         public DateTime ReleaseDate { get; set; }
 
-        public IList<string> Genres { get; set; }
+        public string Genres { get; set; }
 
         public IList<MovieDetailsActorResult> MovieActor { get; set; }
 

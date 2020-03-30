@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Linq;
-using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Movie.Infrastructure.DataBase;
-using System.Data.Entity.Validation;
+using Microsoft.EntityFrameworkCore;
 
 namespace Movie.Infrastructure.Repository
 {
@@ -37,7 +36,7 @@ namespace Movie.Infrastructure.Repository
                 _context.Set<T>().Add(entity);
                 _context.SaveChangesAsync();
             }
-            catch (DbEntityValidationException dbEx)
+            catch (Exception dbEx)
             {
                 throw new Exception(dbEx.Message);
             }
@@ -55,7 +54,7 @@ namespace Movie.Infrastructure.Repository
 
                 _context.SaveChangesAsync();
             }
-            catch (DbEntityValidationException dbEx)
+            catch (Exception dbEx)
             {
                 throw new Exception(dbEx.Message);
             }
@@ -71,7 +70,7 @@ namespace Movie.Infrastructure.Repository
                 _context.Set<T>().Update(entity);
                 _context.SaveChanges();
             }
-            catch (DbEntityValidationException dbEx)
+            catch (Exception dbEx)
             {
                 throw new Exception(dbEx.Message);
             }
@@ -89,7 +88,7 @@ namespace Movie.Infrastructure.Repository
 
                 _context.SaveChanges();
             }
-            catch (DbEntityValidationException dbEx)
+            catch (Exception dbEx)
             {
                 throw new Exception(dbEx.Message);
             }
@@ -106,7 +105,7 @@ namespace Movie.Infrastructure.Repository
 
                 _context.SaveChanges();
             }
-            catch (DbEntityValidationException dbEx)
+            catch (Exception dbEx)
             {
                 throw new Exception(dbEx.Message);
             }
@@ -124,7 +123,7 @@ namespace Movie.Infrastructure.Repository
 
                 _context.SaveChanges();
             }
-            catch (DbEntityValidationException dbEx)
+            catch (Exception dbEx)
             {
                 throw new Exception(dbEx.Message);
             }

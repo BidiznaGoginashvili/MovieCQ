@@ -1,14 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Movie.Infrastructure.DataBase;
 using Movie.Infrastructure.Repository;
+using Microsoft.Extensions.DependencyInjection;
+using Movie.Application.Infrastructure.Queries;
+using Movie.Application.Infrastructure.Commands;
 
 namespace Movie
 {
@@ -30,6 +27,7 @@ namespace Movie
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 
@@ -45,12 +43,14 @@ namespace Movie
             {
                 endpoints.MapControllerRoute(
                      name: "default",
-                     pattern: "{controller=Movie}/{action=List}");
+                     pattern: "{controller=Movie}/{action=Create}");
             });
         }
 
         public static void AddDependencyInjections(this IServiceCollection services)
         {
+            services.AddScoped<CommandExecutor, CommandExecutor>();
+            services.AddScoped<QueryExecutor, QueryExecutor>();
             services.AddDbContext<MovieDbContext>();
             services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
         }

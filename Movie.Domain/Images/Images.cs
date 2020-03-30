@@ -11,11 +11,8 @@
         }
 
         public int Id { get; private set; }
-
         public string Path { get; private set; }
-
         public int EntityId { get; private set; }
-
         public string EntityName { get; private set; }
     }
 }

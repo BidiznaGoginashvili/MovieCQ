@@ -9,7 +9,7 @@ namespace Movie.Domain.Movies
     public class Movie
     {
         public Movie(int id, string title, DateTime releaseDate, decimal budget, decimal salary,
-            string description, IList<Genre> genres, IList<MovieActors> movieActors, IList<MovieDirector> movieDirector)
+            string description)
         {
             Id = id;
             Title = title;
@@ -17,27 +17,17 @@ namespace Movie.Domain.Movies
             Budget = budget;
             Salary = salary;
             Description = description;
-            Genres = genres;
-            MovieActor = movieActors;
-            MovieDirector = movieDirector;
         }
 
         public int Id { get; private set; }
-
         public string Title { get; private set; }
-
         public DateTime ReleaseDate { get; set; }
-
         public decimal Budget { get; private set; }
-
         public decimal Salary { get; private set; }
-
         public string Description { get; private set; }
 
-        public IList<Genre> Genres { get; private set; }
-
-        public IList<MovieActors> MovieActor { get; private set; }
-
-        public IList<MovieDirector> MovieDirector { get; private set; }
+        public ICollection<MovieGenre> MovieGenres { get; set; }
+        public ICollection<MovieActor> MovieActors { get;  set; }
+        public ICollection<MovieDirector> MovieDirectors { get;  set; }
     }
 }

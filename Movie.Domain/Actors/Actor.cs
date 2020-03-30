@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace Movie.Domain.Directors
+namespace Movie.Domain.Actors
 {
-    public class Director
+    public class Actor
     {
-        public Director(int id, string lastName, string firstName)
+        public Actor(int id, string lastName, string firstName)
         {
             Id = Id;
             LastName = lastName;
@@ -12,8 +12,8 @@ namespace Movie.Domain.Directors
         }
 
         public int Id { get; private set; }
-        public string FirstName { get; private set; }
         public string LastName { get; private set; }
-        public ICollection<MovieDirector> MovieDirectors { get; set; }
+        public string FirstName { get; private set; }
+        public ICollection<MovieActor> MovieActors { get; set; }
     }
 }

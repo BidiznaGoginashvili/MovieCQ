@@ -9,10 +9,7 @@ namespace Movie.Application.Infrastructure
         public Exception Exception { get; set; }
     }
 
-    public class CommandExecutionResult : ExecutionResult
-    {
-        public object Data { get; set; }
-    }
+    public class CommandExecutionResult : ExecutionResult { }
 
     public class QueryExecutionResult<TResult> : ExecutionResult
     {

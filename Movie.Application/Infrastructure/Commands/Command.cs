@@ -11,17 +11,15 @@ namespace Movie.Application.Infrastructure.Commands
             return new CommandExecutionResult
             {
                 Success = false,
-                Data = null,
                 Exception = exception
             };
         }
 
-        protected CommandExecutionResult Ok(object data)
+        protected CommandExecutionResult Ok()
         {
             return new CommandExecutionResult
             {
                 Success = true,
-                Data = data,
                 Exception = null
             };
         }
